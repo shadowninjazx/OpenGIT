@@ -201,10 +201,12 @@
 		<center><h1>Abstract</h1></center>
 		<tr>
 			<td>
-				Building on top of a recent class conditional generative image transformer, MaskGIT [], we propose to develop a pipeline for language controlled image editing. We focus 
+				Building on top of a recent class conditional generative image transformer, <a href="https://arxiv.org/abs/2202.04200">MaskGIT</a>, we propose to develop a pipeline for language controlled image editing. We focus 
 				on a simple yet ubiquitous logic, {a} to {b}, which can be expressed as "change {a} to {b}" or "replace {a} with {b}", and apply the desired actions by performing edits on 
-				an input image. We constrain {a} to be a class in COCO [] and {b} to be an open-domain phrase that describes an object. Finally, we leverage Mask R-CNN [], MaskGIT, and CLIP []
-				to perform region targeted class conditional image generation and image-language optimization.
+				an input image. We constrain {a} to be a class in <a href="https://cocodataset.org/">COCO</a> and {b} to be an open-domain phrase that describes an object. 
+        Finally, we leverage <a href="https://arxiv.org/abs/1703.06870">Mask R-CNN</a>, <a href="https://arxiv.org/abs/2202.04200">MaskGIT</a>, 
+        and <a href="https://openai.com/blog/clip/">CLIP</a> to perform region targeted class conditional image generation
+        and image-language optimization.
 			</td>
 		</tr>
 	</table>
@@ -228,8 +230,10 @@
 	<table align=center width=850px>
 		<center><h1>Method</h1></center>
 		<tr>
-			<td>
-				Magic.
+      <td>
+        <center>
+          <img class="round" style="width:800px" src="./resources/pipeline.png"/>
+        </center>
 			</td>
 		</tr>
 	</table>
