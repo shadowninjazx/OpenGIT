@@ -1,6 +1,18 @@
 <script src="http://www.google.com/jsapi" type="text/javascript"></script> 
 <script type="text/javascript">google.load("jquery", "1.3.2");</script>
 
+<script type="text/javascript" id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+        </script>
+        <!-- sets $$ as shorthand for in-text math functions -->
+        <script>
+         window.MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+          };
+        </script>
+
 <style type="text/css">
 	body {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -144,6 +156,11 @@
 				<tr>
 					<td align=center width=100px>
 						<center>
+							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Zhizhuo Zhou</a></span>
+						</center>
+					</td>
+          <td align=center width=100px>
+						<center>
 							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Gaoyue Zhou</a></span>
 						</center>
 					</td>
@@ -152,11 +169,7 @@
 							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Qiyun Chen</a></span>
 						</center>
 					</td>
-					<td align=center width=100px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Zhizhuo Zhou</a></span>
-						</center>
-					</td>
+					
 				</tr>
 			</table>
 			<table align=center width=250px>
@@ -233,10 +246,51 @@
       <td>
         <center>
           <img class="round" style="width:800px" src="./resources/pipeline.png"/>
+          <figcaption>OpenGIT Pipeline</figcaption>
         </center>
 			</td>
 		</tr>
 	</table>
+
+  <table align=center width=850px>
+    <tr>
+      <td>
+        <br>
+        Our proposed OpenGIT Pipeline consists of three main components: <b>Natural Language Processing Module</b>,
+        <b>Class Conditional Image Generation</b>, and <b>CLIP Guided Optimization</b>.<br><br>
+        The entire procedure is as follows: <br><br>
+        Firstly, OpenGIT performs Natural Language Processing (NLP), the user inputs an image and a natural language prompt
+        specifying the source category (the item to be replaced in the input image) and the target category (
+        the item to change into). The source category must be from one of the 
+        <a href="https://github.com/amikelive/coco-labels"> categories in the COCODataset </a>. The main target
+        category (or categories) should be within the 1000 lables in the <a href="https://www.image-net.org/">ImageNet Dataset</a>. 
+        However, it can be a simple category like "husky", or it can also be any open-domain phrase that describes
+        the category (categories), such as "zebra-striped cat" or "fish and strawberry".<br>
+        As an illustration for the first module, the user could input an image of a dog and a prompt 
+        "Replace dog with lemon husky". Then, our module would parse "dog" as our source category, "husky"
+        as our target category, and "lemon husky" as our CLIP prompt. Here, note that because we used a descriptive
+        word for our target category, we would use CLIP to further optimize our image. Otherwise, if the input prompt
+        merely said "Replace dog with husky", then we would not have any CLIP prompt nor perform CLIP optimization.
+        <br><br>
+        Secondly, OpenGIT performs Class Conditional Generation. This module take as inputs
+        the input image along with the source and target category. The module first uses Detectron2 and Mask R-CNN
+        to locate the bounding box of the source category, and then feed it through a pretrained MaskGIT
+        model to generate a class conditioned image. Here, we offer users to choose a hyperparameter 
+        $r \in (0, 1]$ as the scale of the original bounding box. For example, in general, if $r = 1$, 
+        then OpenGIT would completely replace the source category with the target category. If $r < 1$, 
+        then OpenGIT would keep the outerior of the source category and merges the target category into the 
+        source category (see examples in Results section below).
+        <br><br>
+        Thirdly, OpenGIT performs CLIP Guided Optimization. For the user input prompts with a descriptive
+        prompt for the target category, the first NLP module would obtain a non-empty CLIP prompt.
+        We take our class conditioned generated output and the CLIP prompt as the input to this
+        module, and we use a pretrained CLIP module to generate the output image.
+      </td>
+    </tr>
+  </table>
+  
+
+  
 
 	<br>
 	<hr>
@@ -244,6 +298,19 @@
 
 	<table align=center width=850px>
 		<center><h1>Results</h1></center>
+		<tr>
+			<td>
+				'_________________'
+			</td>
+		</tr>
+	</table>
+  
+  <br>
+	<hr>
+	<br>
+
+  <table align=center width=850px>
+		<center><h1>References</h1></center>
 		<tr>
 			<td>
 				'_________________'
