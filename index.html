@@ -126,6 +126,24 @@
 		height: 1px;
 		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 	}
+
+  figure 
+  {
+    display: inline-block;
+  }
+
+  figure figcaption 
+  {
+    border: 1px;
+    text-align: center;
+  }
+
+  .column {
+            float: left;
+            height: auto;
+            padding: 5px;
+        }
+
 </style>
 
 <html>
@@ -166,7 +184,7 @@
 					</td>
 					<td align=center width=100px>
 						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Qiyun Chen</a></span>
+							<span style="font-size:24px"><a href="https://www.linkedin.com/in/qiyun-chen-313a16193/">Qiyun Chen</a></span>
 						</center>
 					</td>
 					
@@ -194,7 +212,7 @@
 			<tr>
 				<td width=260px>
 					<center>
-						<img class="round" style="width:500px" src="./resources/teaser.png"/>
+						<img class="round" style="width:600px" src="./resources/teaser.png"/>
 					</center>
 				</td>
 			</tr>
@@ -227,18 +245,19 @@
 	<br>
 	<hr>
 	
-	<table align=center width=850px>
-		<center><h1>Related Works</h1></center>
+	<!-- <table align=center width=850px>
+		<center><h1>Related Works </h1></center>
 		<tr>
 			<td>
 				Recent works in learning based synthesis show that a two stage VQ-VAE and transformer setup is able to generate realistic and diverse images. 
+        
 			</td>
 		</tr>
-	</table>
+	</table> -->
 
-	<br>
+	<!-- <br>
 	<hr>
-	<br>
+	<br> -->
 
 	<table align=center width=850px>
 		<center><h1>Method</h1></center>
@@ -300,7 +319,153 @@
 		<center><h1>Results</h1></center>
 		<tr>
 			<td>
-				'_________________'
+				Here're the results of our OpenGIT pipeline. 
+        Recall that the user inputs an image of an object with a prompt 
+        similar to "Replace {a} with {b}".<br><br>
+        Firstly, we present the image generation for the case where {b} is simply a target category, 
+        thus no CLIP optimization is performed.
+        <table align=center width=850px>
+          <div class="row">
+            <div class="column">
+              <figure>
+                <img src="inputs/orig_dog.png" width=320px>
+                <figcaption>User Input Image: dog</figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="results/16726_dog_leopard.jpg" width=320px>
+                <figcaption>Replace dog with leopard </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column">
+              <figure>
+                <img src="inputs/keyboard.jpeg" width=320px>
+                <figcaption>User Input Image: keyboard</figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="results/16726_keyboard_cat.png" width=320px>
+                <figcaption>Prompt: Replace keyboard with cat</figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="inputs/dog.jpeg" width=320px>
+                <figcaption>User Input Image: dog</figcaption>
+              </figure>
+            </div>
+            <div class="column">
+              <figure>
+                <img src="results/16726_dog_husky.jpg" width=320px>
+                <figcaption>Replace dog with husky</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="column">
+            <figure>
+              <img src="inputs/boat.jpeg" width=320px>
+              <figcaption>User Input Image: boat</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="column">
+          <figure>
+            <img src="results/16726_boat_loaf.jpg" width=320px>
+            <figcaption>Replace dog with tigercat</figcaption>
+          </figure>
+        </div>
+      </div>
+      </table>
+      
+      Next, we present the image generation for the case where {b} is a descriptive phrase
+      about a target category, we perform CLIP optimization in this case.
+
+      <table align=center width=850px>
+        <div class="row">
+          <div class="column">
+            <figure>
+              <img src="inputs/orig_dog.png" width=320px>
+              <figcaption>User Input Image: dog</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img src="results/purple_butterfly_leopard.png" width=320px>
+              <figcaption>Replace dog with purple butterfly leopard</figcaption>
+            </figure>
+          </div>
+        </div>
+
+          <div class="column">
+            <figure>
+              <img src="inputs/keyboard.jpeg" width=320px>
+              <figcaption>User Input Image: keyboard</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img src="results/keyboard_zebra_cat.jpg" width=320px>
+              <figcaption>Prompt: Replace keyboard with zebra-striped cat</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img src="inputs/dog.jpeg" width=320px>
+              <figcaption>User Input Image: dog</figcaption>
+            </figure>
+          </div>
+          <div class="column">
+            <figure>
+              <img src="results/dog_rainbow_husky.jpg" width=320px>
+              <figcaption>Replace dog with rainbow husky</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="column">
+          <figure>
+            <img src="inputs/boat.jpeg" width=320px>
+            <figcaption>User Input Image: boat</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="column">
+        <figure>
+          <img src="results/16726_boat_loaf.jpg" width=320px>
+          <figcaption>Replace boat with cinnamon roll</figcaption>
+        </figure>
+      </div>
+    </div>
+    </table>
+
+    Lastly, we present the results of {b} where b is a combination of different categories.
+    Essentially, we achieve the results via combining the latent features of different categories.
+    <table align=center width=850px>
+      <div class="row">
+        <div class="column">
+          <figure>
+            <img src="inputs/orig_dog.png" width=320px>
+            <figcaption>User Input Image: dog</figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure>
+            <img src="results/dog_fish_n_strawberry.png" width=320px>
+            <figcaption>Replace dog with purple butterfly leopard</figcaption>
+          </figure>
+        </div>
+      </div>
+    </table>
+
+
 			</td>
 		</tr>
 	</table>
@@ -313,8 +478,19 @@
 		<center><h1>References</h1></center>
 		<tr>
 			<td>
-				'_________________'
+        [1] Chang, H., Zhang, H., Jiang, L., Liu, C., and Freeman, W. T., “MaskGIT: Masked Generative Image Transformer”, <i>arXiv e-prints</i>, 2022.
+        <br>
+        [2] He, K., Gkioxari, G., Dollár, P., and Girshick, R., “Mask R-CNN”, <i>arXiv e-prints</i>, 2017.
+        <br>
+        [3] Radford, A., “Learning Transferable Visual Models From Natural Language Supervision”, <i>arXiv e-prints</i>, 2021.
+        <br>
+        [4] Y. Wu, A. Kirillov, F. Massa, W.-Y. Lo, και R. Girshick, ‘Detectron2’, 2019. [Έκδοση σε ψηφιακή μορφή]. Διαθέσιμο στο: https://github.com/facebookresearch/detectron2.
+        <br>
+        [5] “Common objects in context,” COCO. https://cocodataset.org/#home.
+        <br>
+        [6] https://www.image-net.org/. 
 			</td>
+
 		</tr>
 	</table>
 
