@@ -357,7 +357,7 @@
 		<tr>
 			<td>
 				<h3>The Effect of Bounding Box Size</h3>
-				<p>TODO</p>
+				<p>While generating edited images with OpenGIT, we find that the output is particularly sensitive to the size of the bounding box, even if the bounding box always bounds the same object. Therefore, we introduce another parameter, $r$, the ratio of the size of the desired bounding box to that of the original bounding box given by MaskRCNN as described above. While rescaling the bounding box, we make sure both the center and the aspect ratio of the original bounding box are preserved. Here are some results produced by OpenGIT when we specify different $r$ while keeping other inputs the same.</p>
 				<table align=center width=850px>
 					<div class="row">
 					  <div class="column">
@@ -369,7 +369,7 @@
 					  <div class="column">
 						<figure>
 						  <img src="results/bbox_ratio/bbox04.png" height=120px>
-						  <figcaption>Bounding box ratio = 0.4</figcaption>
+						  <figcaption>Bounding box $r = 0.4$</figcaption>
 						</figure>
 					  </div>
 					  <div class="column">
@@ -390,7 +390,7 @@
 					  <div class="column">
 						<figure>
 						  <img src="results/bbox_ratio/bbox1.png" height=120px>
-						  <figcaption>Bounding box ratio =   1</figcaption>
+						  <figcaption>Bounding box $r = 1$</figcaption>
 						</figure>
 					  </div>
 					  <div class="column">
@@ -399,11 +399,10 @@
 						  <figcaption>Output</figcaption>
 						</figure>
 					</div>
-		  
-					
-				</div>
+					</div>
+
 				</table>
-				
+				<p>To generate the above visualizations, we give the same prompt "change cat to rabbit". For the first example, when $r = 0.4$, the bounding box only covers the center part of the cat's face. It's expected that the model would produce a rabbit face that merges well with the original image. When $r = 1$, the whole cat is covered in the bounding box. In this case, the model replaces the cat with a rabbit, including ears and the body. Since there is no inherent quality difference between the two ways of editing and it should be up to the user to decide which output gives the desired image editing effect, we let users specify $r$ directly in our interface. Future work includes inferring $r$ automatically given descriptive words like "face only", "partially", "completely", etc.</p>
 
 			</td>
 		</tr>
