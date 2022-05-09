@@ -323,7 +323,7 @@
 					<img class="round" style="width:800px" src="./resources/m1_maskrcnn.png"/>
 					<figcaption>MaskRCNN Pipeline</figcaption>
 				</center>
-				<p>TODO</p>
+				<p>Once we get the object class to be replaced by parsing the user prompt, we use a MaskRCNN model pretained on the <a href="https://cocodataset.org/">COCO</a> dataset to predict the bounding box of the specified object in the input image. The above figure shows the model structure of MaskRCNN. MaskRCNN is an extension of Faster R-CNN with an additional branch for predicting segmentation masks on each region of interest. The model has two stages. During the first stage, regions of interest are proposed by the region proposal network. These will be further processed by the Region of Interest Pooling networks to exact features and perform object classification. In parallel to object classification, binary masks of objects are predicted by the Mask Head portion denoted in the figure. The outputs of MaskRCNN include class labels, bounding boxes, and object masks for all objects. In OpenGIT, we make use of the bounding box of the specified object for later processing. </p>
 			</td>
 		</tr>
 		<tr>
