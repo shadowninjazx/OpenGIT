@@ -341,7 +341,14 @@
 					<img class="round" style="width:800px" src="./resources/m3_clip.png"/>
 					<figcaption>CLIP Pipeline</figcaption>
 				</center>
-				<p>TODO</p>
+				<p>Given a sample of class-conditioned image x, let x = f_d(q_z) where f_d is the VQ-VAE decoder and q_z is the grid of quantized latent vectors. We optimize 
+					the text image similarity loss using pretrained CLIP model, CLIP(f_d(q_z), text_prompt). By fixing the decoder f_d, we optimize the text image similarity loss
+					by performing gradient descent steps in q_z space. This allows us to fine-tune the generated image on an open-domain text prompt. We see that pretrained CLIP 
+					model provides especially good guidance when we want to modify the color or texture of the generated images. However, if if we want to generate a new object 
+					from scratch, performing gradient descent on q_z w.r.t. to CLIP loss does not lead to good results. In practice, we rely on pretrained MaskGIT to do content and object 
+					level image editing and we use CLIP optimization to control the texture of the output. When combined, MaskGIT + CLIP can produce a lot of creative edits in a huge space 
+					that is effectively 1,000 ImageNet classes * millions of potential texture and style adjective text prompts. 
+				</p>
 			</td>
 		</tr>
 	</table>
