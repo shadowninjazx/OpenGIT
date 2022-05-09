@@ -333,7 +333,40 @@
 					<img class="round" style="width:800px" src="./resources/m2_maskgit.png"/>
 					<figcaption>MaskGIT Pipeline</figcaption>
 				</center>
-				<p>TODO</p>
+				<p>
+          Given an input image, target label and a bounding box automatically produced by 
+          the previous MaskRCNN Pipeline, we use a pretrained MaskGIT model
+          for class-conditioned image editing. The region inside of the bounding box
+          is considered as the initial mask to the MaskGIT iterative decoding algorithm.
+          <br><br>
+          The iterative decoding algorithm runs T steps. It starts with the initial mask,
+          in our case, it's the rectangle gray area inside of the bounding box. 
+          Let the masked tokens be $Y_M^{(t)}$.
+          At each step t, the model produces the image via predicting all tokens
+          at the same time but only preserving the most confident ones. 
+          We define each masked location as $i$. A token $y_i^{(t)}$ is sampled 
+          based on its prediction probabilities $p_i^{(t)} \in \mathbf{R}^K$.
+          The confidence score is defined as the corresponding prediction score 
+          of a token $y_i^{(t)}$, and it indicates how confident our model is of this
+          prediction. For the non-masked regions, the confidence score is set to 1.0.
+
+          For the less confident tokens, they are considered as the mask input to the next iteration,
+          the mask ratio is designed to be decreasing so that within T iterations,
+          all tokens are being generated. 
+          <br><br>
+          After we perform this decoding algorithm for T iterations, 
+          the model generates a resulting image that has contents of the given target label 
+          and contexts of the input image.<br><br>
+          In our example above, we see that given our original input image of a dog,
+          target label <i>cat</i> and a bounding box, 
+          the contents within a box becomes the initial mask, and we obtain a cat image 
+          with the contexts (e.g. fur and color) that's similar to the original dog image.
+          <br>
+
+
+
+
+        </p>
 			</td>
 		</tr>
 		<tr>
