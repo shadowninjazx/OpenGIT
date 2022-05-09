@@ -324,6 +324,8 @@
 					<figcaption>MaskRCNN Pipeline</figcaption>
 				</center>
 				<p>Once we get the object class to be replaced by parsing the user prompt, we use a MaskRCNN model pretained on the <a href="https://cocodataset.org/">COCO</a> dataset to predict the bounding box of the specified object in the input image. The above figure shows the model structure of MaskRCNN. MaskRCNN is an extension of Faster R-CNN with an additional branch for predicting segmentation masks on each region of interest. The model has two stages. During the first stage, regions of interest are proposed by the region proposal network. These will be further processed by the Region of Interest Pooling networks to exact features and perform object classification. In parallel to object classification, binary masks of objects are predicted by the Mask Head portion denoted in the figure. The outputs of MaskRCNN include class labels, bounding boxes, and object masks for all objects. In OpenGIT, we make use of the bounding box of the specified object for later processing. </p>
+				<br><br>
+			
 			</td>
 		</tr>
 		<tr>
@@ -366,7 +368,8 @@
 
 
 
-        </p>
+		</p>
+		<br><br>
 			</td>
 		</tr>
 		<tr>
@@ -376,14 +379,15 @@
 					<img class="round" style="width:800px" src="./resources/m3_clip.png"/>
 					<figcaption>CLIP Pipeline</figcaption>
 				</center>
-				<p>Given a sample of class-conditioned image x, let x = f_d(q_z) where f_d is the VQ-VAE decoder and q_z is the grid of quantized latent vectors. We optimize 
-					the text image similarity loss using pretrained CLIP model, CLIP(f_d(q_z), text_prompt). By fixing the decoder f_d, we optimize the text image similarity loss
-					by performing gradient descent steps in q_z space. This allows us to fine-tune the generated image on an open-domain text prompt. We see that pretrained CLIP 
+				<p>Given a sample of class-conditioned image $x$, let $x = f_d(q_z)$ where $f_d$ is the VQ-VAE decoder and $q_z$ is the grid of quantized latent vectors. We optimize 
+					the text image similarity loss using pretrained CLIP model, CLIP($f_d(q_z)$, text_prompt). By fixing the decoder $f_d$, we optimize the text image similarity loss
+					by performing gradient descent steps in $q_z$ space. This allows us to fine-tune the generated image on an open-domain text prompt. We see that pretrained CLIP 
 					model provides especially good guidance when we want to modify the color or texture of the generated images. However, if if we want to generate a new object 
-					from scratch, performing gradient descent on q_z w.r.t. to CLIP loss does not lead to good results. In practice, we rely on pretrained MaskGIT to do content and object 
+					from scratch, performing gradient descent on $q_z$ w.r.t. to CLIP loss does not lead to good results. In practice, we rely on pretrained MaskGIT to do content and object 
 					level image editing and we use CLIP optimization to control the texture of the output. When combined, MaskGIT + CLIP can produce a lot of creative edits in a huge space 
 					that is effectively 1,000 ImageNet classes * millions of potential texture and style adjective text prompts. 
 				</p>
+				<br>
 			</td>
 		</tr>
 	</table>
