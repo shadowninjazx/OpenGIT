@@ -134,8 +134,10 @@
 
   figure figcaption 
   {
+	margin-top: .5em;
     border: 1px;
     text-align: center;
+	font-weight: bold;
   }
 
   .column {
@@ -575,7 +577,107 @@
 			</td>
 		</tr>
 	</table>
-  
+
+	<br>
+	<hr>
+	<br>
+	<h1>Additional Results</h1>
+	<table align=center width=850px>
+	We show some results where we condition on more abstract adjectives, such as "angry", "cute", and "beautiful." We see that after CLIP optimization, the visual quality 
+	of the image goes down. This makes sense since we are now moving away from the quantized q_z that the decoder is familiar with generating images from, and instead, feeding it
+	non-quantized q_z. New works such as DALL-E 2 show that a diffusion based generator may be better at generating images conditioned on a text prior since it can update the image
+	many times during the denoising process. 
+	<tr>
+		<td>
+			<div class="row">
+				<div class="column">
+					<figure>
+					<img src="inputs/orig_dog.png" width=320px>
+					<figcaption>Input Image</figcaption>
+					</figure>
+				</div>
+				<div class="column">
+					<figure>
+					<img src="results/dog_angry.jpg" width=320px>
+					<figcaption>Replace dog with angry husky. </figcaption>
+					</figure>
+				</div>
+				</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="row">
+				<div class="column">
+					<figure>
+					<img src="inputs/orig_dog.png" width=320px>
+					<figcaption>Input Image</figcaption>
+					</figure>
+				</div>
+				<div class="column">
+					<figure>
+					<img src="results/dog_cute.jpg" width=320px>
+					<figcaption>Replace dog with cute husky.</figcaption>
+					</figure>
+				</div>
+				</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="row">
+				<div class="column">
+					<figure>
+					<img src="inputs/orig_dog.png" width=320px>
+					<figcaption>Input Image</figcaption>
+					</figure>
+				</div>
+				<div class="column">
+					<figure>
+					<img src="results/dog_beautiful.jpg" width=320px>
+					<figcaption>Replace dog with beautiful husky.</figcaption>
+					</figure>
+				</div>
+				</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="row">
+				<div class="column">
+					<figure>
+					<img src="inputs/boat.jpeg" width=320px>
+					<figcaption>Input Image</figcaption>
+					</figure>
+				</div>
+				<div class="column">
+					<figure>
+					<img src="results/boat_dog.jpg" width=320px>
+					<figcaption>Replace boat with dog.</figcaption>
+					</figure>
+				</div>
+				</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div class="row">
+				<div class="column">
+					<figure>
+					<img src="inputs/boat.jpeg" width=320px>
+					<figcaption>Input Image</figcaption>
+					</figure>
+				</div>
+				<div class="column">
+					<figure>
+					<img src="results/boat_dog_colorful.jpg" width=320px>
+					<figcaption>Replace boat with colorful dog.</figcaption>
+					</figure>
+				</div>
+				</div>
+		</td>
+	</tr>
+	</table>
   <br>
 	<hr>
 	<br>
